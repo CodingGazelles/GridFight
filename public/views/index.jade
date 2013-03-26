@@ -1,0 +1,24 @@
+doctype 5
+html(ng-app='App', ng-controller='AppCtrl')
+  head
+    title= 'Grid Fight'
+
+    link(rel='stylesheet', href='/css/style.css')
+
+
+  body
+
+    ng-view
+
+    script(src='/lib/angular/angular.js')
+    script(src='/lib/app.router.js')
+
+    script(src='/config/config.js')
+    script(src='/config/routes.js')
+    script(src='/js/services/utils.js')
+    script(src='/js/directives/directives.js')
+    script(src='/js/controllers/controllers.js')
+    script(src='/js/app.js')
+
+
+
