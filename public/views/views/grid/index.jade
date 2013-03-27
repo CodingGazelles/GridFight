@@ -1,7 +1,7 @@
-div.unselectable(ng-controller="GridCtrl")
+div.container.unselectable(ng-controller="GridCtrl")
 	table.grid(sf-grid)
 		tr(ng-repeat="row in rows")
 			td.cell(ng-repeat="col in cols")
 				div.hotZone(sf-cell) 
 					{{grid.item([row,col])}}
-	canvas(sf-path-canvas, width="300", height="300", style="border:1px solid #000000;")
+	canvas.shadow(sf-path-canvas, width="300", height="300", style="border:1px solid #000000;")

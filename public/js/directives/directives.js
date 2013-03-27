@@ -73,13 +73,13 @@ angular.module('App.Directives', [])
                     var m = 50;
 
                     ctx.beginPath();
-                    x = scope.path[0][0] * m;
-                    y = scope.path[0][1] * m;
+                    x = scope.path[0][1] * m + 25;
+                    y = scope.path[0][0] * m + 25;
                     console.log("move to x: " + x + ", y: " + y);
                     ctx.moveTo(x,y);
                     for (var i = 1; i < scope.path.length; i++) {
-                        x = scope.path[i][0] * m;
-                        y = scope.path[i][1] * m;
+                        x = scope.path[i][1] * m + 25;
+                        y = scope.path[i][0] * m + 25;
                         console.log("line to x: " + x + ", y: " + y);
                         ctx.lineTo(x, y);
                     };

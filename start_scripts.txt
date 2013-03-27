@@ -1,4 +1,4 @@
 Start app:
-cd /Users/tancrede/Documents\ IT/Projets/WB/star-fight-02
+cd /Users/tancrede/Documents\ IT/Projets/StarFight/workspaces/SF02
 node app.js
 
