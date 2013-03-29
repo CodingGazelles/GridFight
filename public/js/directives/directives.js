@@ -62,12 +62,16 @@ angular.module('App.Directives', [])
         link: function(scope, iElement, iAttrs){
             console.log("sfPathCanvas: Link.");
 
-            var x, y;
-            var ctx = iElement[0].getContext('2d');
+            var x, y, ctx;
+
+            ctx = iElement[0].getContext('2d');
             ctx.strokeStyle = "orange";
+
 
             var layout = function(){
                 console.log("sfPathCanvas: Layout.");
+
+                ctx.clearRect(0,0,400,400);
 
                 if( scope.path.length > 1){
                     var m = 50;
@@ -101,6 +105,14 @@ angular.module('App.Directives', [])
                 },
                 true
             );
+
+            // iElement.bind('mousedown', function($event){
+            //     console.log("sfCanvas: Detected mousedown.");
+            // });
+
+            // iElement.bind('mouseup', function($event){
+            //     console.log("sfCanvas: Detected mouseup.");
+            // });
         }
     }
 })

@@ -1,7 +1,9 @@
 div.container.unselectable(ng-controller="GridCtrl")
-	table.grid(sf-grid)
-		tr(ng-repeat="row in rows")
-			td.cell(ng-repeat="col in cols")
-				div.hotZone(sf-cell) 
-					{{grid.item([row,col])}}
-	canvas.shadow(sf-path-canvas, width="300", height="300", style="border:1px solid #000000;")
+	div.itemLayer
+		div.row(ng-repeat="row in rows")
+			div.cell(ng-repeat="col in cols")
+				{{grid.item([row,col])}}
+	canvas.canvasLayer(sf-path-canvas, width="300", height="300", style="border:1px solid #000000;")
+	div.hotZoneLayer
+		div.row(ng-repeat="row in rows")
+			div.hotZone(sf-cell, ng-repeat="col in cols")

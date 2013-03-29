@@ -1,7 +1,7 @@
 {
   "name": "Start-Fight",
   "subdomain": "Start-Fight",
-  "version": "0.0.1-1",
+  "version": "0.0.1-3",
   "private": true,
   "scripts": {
     "start": "node app.js"

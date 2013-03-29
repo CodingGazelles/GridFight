@@ -1,3 +1,17 @@
+@gridWidth: 402px;
+@gridHeight: 402px;
+@rows: 6;
+@cols: 6;
+@cellWidth: floor(@gridWidth / @cols);
+@cellHeight: floor(@gridHeight / @rows);
+@cellMargin: 0px;
+@cellBorder: 0px;
+@cellPadding: 0px;
+@cellContentWidth: floor(@cellWidth - (@cellMargin * 2) - (@cellBorder * 2) - (@cellPadding * 2));
+@cellContentHeight: floor(@cellHeight - (@cellMargin * 2) - (@cellBorder * 2) - (@cellPadding * 2));
+
+
+
 * {
   border: 0px;
   margin: 0px;
@@ -13,44 +27,63 @@
   user-select: none;
 }
 
+.sized {
+  width: @gridWidth;
+  height: @gridHeight;
+}
+
+.positioned {
+  top: 0px;
+  left: 0px;
+  position: absolute; 
+}
+
 .container {
-  width: 400px;
-  height: 400px;
+  .sized;
   margin: 0 auto;  
   position: relative;
 }
 
-.grid {
-  width: 400px;
-  height: 400px;
-  top: 0px;
-  left: 0px;
-  position: absolute;
+.itemLayer {
+  z-index: 1;
+  .sized;
+  .positioned;
+}
+
+.row {
+  width: @gridWidth;
+  height: @cellHeight;
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  display: inline-block;
+  width: @cellContentWidth;
+  height: @cellContentHeight;
   border-radius: 3px;
-  border: 1px black solid;
+  text-align: center;
+  line-height: 4.5em;
 }
+
+.canvasLayer {
+  z-index: 2; 
+  .sized;
+  .positioned;
+}
+
+.hotZoneLayer {
+  z-index: 3; 
+  .sized;
+  .positioned;
+}
+
+@hotZoneWidth: 35px;
+@hotZoneHeight: 35px;
 
 .hotZone {
-  width: 30px;
-  height: 30px;
-  margin: auto;
-  text-align: center;
-  line-height: 2em;
-}
-
-.shadow {
-  width: 400px;
-  height: 400px;
-  top: 0px;
-  left: 0px;
-  position: absolute;
-  z-index: 1; 
-  pointer-events: none;
+  display: inline-block;
+  width: @hotZoneWidth;
+  height: @hotZoneHeight;
+  margin: ((@cellWidth - @hotZoneWidth) / 2);
 }
 
 
