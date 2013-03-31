@@ -34,13 +34,18 @@ angular.module('App.Controllers', [])
 		grid[i] = String.fromCharCode( Math.round( Math.random() * 5 + 65));
 	};
 
+	grid.index = function(position){
+		if(!Array.isArray(position)) throw new Error("Position must be an array.");
+		return position[0] * colNb + position[1];
+	}
+
 	grid.item = function(position){
 		if(!Array.isArray(position)) throw new Error("Position must be an array.");
-		return grid[position[0] * colNb + position[1]];
+		return grid[grid.index(position)];
 	};
 
 	// array of selected items (cell position)
-	var path = [];
+	var path = null;
 	var pathInProgress = false;
 	var pathType = null;
 
@@ -116,12 +121,31 @@ angular.module('App.Controllers', [])
 	// close a path
 	$scope.closePath = function(){
 		console.log("CellCtrl: Close path: " + path.toString());
-		$scope.pathInProgress = pathInProgress = false;
-		$scope.path = path = path.splice(0, path.length);
+
+		if(path.length >= 2){
+			$scope.removeItemsInPath();
+
+		}
+
+
+		pathInProgress = false;
+		// path = path.splice(0, path.length);
+		path = null;
+
+		// copy local variables in th scope
+		$scope.pathInProgress = pathInProgress;
+		$scope.path = path;
 
 		$scope.$digest();
 
 		// declencher l'action en fonction des items dans le path
+	};
+
+	// remove items which are in the path
+	$scope.removeItemsInPath = function(){
+		for (var i = 0; i < path.length; i++) {
+			path[i]
+		};
 	};
 })
 ;

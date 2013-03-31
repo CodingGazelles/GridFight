@@ -34,7 +34,7 @@ angular.module('App.Directives', [])
             iElement.bind('mousedown', function($event){
                 console.log("sfCell: Detected mousedown on: " + scope.item + "/" + scope.position);
                 scope.startPath(scope.position);
-                // todo: stoper la propagation de l'event
+                // todo: stoper la propagation de l'event?
             });
 
             iElement.bind('mouseover', function($event){
@@ -42,7 +42,7 @@ angular.module('App.Directives', [])
                 if(scope.pathInProgress){
                     console.log("sfCell: Launch action to add item.");
                     scope.addItemToPath(scope.position);
-                    // todo: stoper la propagation de l'event
+                    // todo: stoper la propagation de l'event?
                 }else{
                     console.log("sfCell: No path in progress, event rejected.");
                 }
@@ -51,7 +51,7 @@ angular.module('App.Directives', [])
             iElement.bind('mouseup', function($event){
                 console.log("sfCell: Detected mouseup.");
                 scope.closePath();
-                // todo: stoper la propagation de l'event
+                // todo: stoper la propagation de l'event?  
             });
         }
     };
@@ -73,7 +73,7 @@ angular.module('App.Directives', [])
 
                 ctx.clearRect(0,0,400,400);
 
-                if( scope.path.length > 1){
+                if( scope.path && scope.path.length > 1){
                     var m = 50;
 
                     ctx.beginPath();
@@ -105,14 +105,6 @@ angular.module('App.Directives', [])
                 },
                 true
             );
-
-            // iElement.bind('mousedown', function($event){
-            //     console.log("sfCanvas: Detected mousedown.");
-            // });
-
-            // iElement.bind('mouseup', function($event){
-            //     console.log("sfCanvas: Detected mouseup.");
-            // });
         }
     }
 })
